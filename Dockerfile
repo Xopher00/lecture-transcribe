@@ -2,7 +2,7 @@
 FROM debian:bookworm-slim AS whisper-build
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    cmake g++ git ca-certificates \
+    cmake make g++ git ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /src
@@ -14,7 +14,7 @@ RUN cmake -B build && cmake --build build -j"$(nproc)" --config Release --target
 FROM debian:bookworm-slim
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    libgomp1 ca-certificates curl ffmpeg sox python3 python3-venv supervisor \
+    libgomp1 ca-certificates curl ffmpeg sox python3 python3-venv supervisor zstd \
     && rm -rf /var/lib/apt/lists/* \
     && curl -fsSL https://ollama.com/install.sh | sh
 
