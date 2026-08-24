@@ -19,7 +19,7 @@ docker run -d --name lecture-transcribe --restart unless-stopped \
   -p 8080:8080 \
   -v /path/to/your/whisper-models:/models:ro \
   -v lecture-ollama-data:/root/.ollama \
-  -e CLEANUP_LLM_MODEL=llama3.2:3b \
+  -e CLEANUP_LLM_MODEL=gemma3:4b \
   lecture-transcribe:latest
 ```
 
@@ -67,4 +67,4 @@ config, no app changes either way.
 | Variable | Default | Purpose |
 |---|---|---|
 | `WHISPER_THREADS` | `nproc` | threads for whisper-server |
-| `CLEANUP_LLM_MODEL` | `llama3.2:3b` | Ollama model used for the cleanup pass |
+| `CLEANUP_LLM_MODEL` | `gemma3:4b` | Ollama model used for the cleanup pass |
