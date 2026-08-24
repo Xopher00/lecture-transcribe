@@ -19,6 +19,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && curl -fsSL https://ollama.com/install.sh | sh
 
 COPY --from=whisper-build /src/build/bin/whisper-server /usr/local/bin/whisper-server
+COPY --from=whisper-build /src/build/bin/*.so* /usr/local/lib/
+RUN ldconfig
 
 RUN python3 -m venv /opt/venv \
     && /opt/venv/bin/pip install --no-cache-dir --upgrade pip
