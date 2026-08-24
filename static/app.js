@@ -70,8 +70,11 @@ async function cycleOnce() {
 }
 
 function scheduleNextCycle() {
-  chunkTimer = setTimeout(async () => {
-    await cycleOnce();
+  chunkTimer = setTimeout(() => {
+    // Fire-and-forget: the recording cadence must stay fixed regardless of how
+    // long the previous chunk's upload/transcription takes. Ordering across
+    // chunks is still guaranteed by the queueTail chain inside uploadChunk.
+    cycleOnce().catch((e) => setStatus(`chunk error: ${e.message}`));
     if (isRecording) scheduleNextCycle();
   }, CHUNK_MS);
 }
