@@ -1,4 +1,4 @@
-const CHUNK_MS = 10000;
+const CHUNK_MS = 20000;
 
 const modelSelect = document.getElementById("model");
 const recordBtn = document.getElementById("record");
