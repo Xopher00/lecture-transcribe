@@ -2,7 +2,7 @@ import os
 
 WHISPER_URL = os.environ.get("WHISPER_URL", "http://127.0.0.1:8090")
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://127.0.0.1:11434")
-CLEANUP_LLM_MODEL = os.environ.get("CLEANUP_LLM_MODEL", "llama3.2:3b-instruct")
+CLEANUP_LLM_MODEL = os.environ.get("CLEANUP_LLM_MODEL", "llama3.2:3b")
 
 # Never accept a raw filesystem path from the client. whisper-server's /load
 # endpoint calls exit(1) on a bad model path, so only these whitelisted,
