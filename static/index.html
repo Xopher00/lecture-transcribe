@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lecture Transcribe</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main>
+    <h1>Lecture Transcribe</h1>
+
+    <div class="controls">
+      <label for="model">Model</label>
+      <select id="model">
+        <option value="small" selected>small (fast, real-time)</option>
+        <option value="medium">medium (slower, more accurate)</option>
+      </select>
+
+      <button id="record">Record</button>
+      <button id="stop" disabled>Stop</button>
+
+      <span id="status"></span>
+    </div>
+
+    <section>
+      <h2>Live transcript</h2>
+      <pre id="live"></pre>
+    </section>
+
+    <section id="cleaned-section" hidden>
+      <h2>Cleaned transcript</h2>
+      <pre id="cleaned"></pre>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
